@@ -1,0 +1,37 @@
+{
+  "name": "react-simple-modal",
+  "version": "1.0.0",
+  "description": "React modal make it simple.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiodxa/react-simple-modal.git"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "es6",
+    "isomorphic"
+  ],
+  "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sergiodxa/react-simple-modal/issues"
+  },
+  "homepage": "https://github.com/sergiodxa/react-simple-modal#readme",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.1",
+    "babel-runtime": "^5.8.20",
+    "eslint-plugin-react": "^3.3.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-eslint": "^1.0.0"
+  }
+}
