@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>React-simple-modal by sergiodxa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">React-simple-modal</h1>
+      <h2 class="project-tagline">React modal make it simple.</h2>
+      <a href="https://github.com/sergiodxa/react-simple-modal" class="btn">View on GitHub</a>
+      <a href="https://github.com/sergiodxa/react-simple-modal/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sergiodxa/react-simple-modal/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="react-simple-modal" class="anchor" href="#react-simple-modal" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-simple-modal</h1>
+
+<p>React modal make it simple.</p>
+
+<h2>
+<a id="how-use-it" class="anchor" href="#how-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How use it</h2>
+
+<p>Download it with:</p>
+
+<div class="highlight highlight-bash"><pre>npm i -S react-simple-modal</pre></div>
+
+<p>Then import it in your code:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">import</span> Modal <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-simple-modal<span class="pl-pds">'</span></span>;</pre></div>
+
+<p>Now you can use it as any React component.</p>
+
+<p>Enjoy!</p>
+
+<h2>
+<a id="props" class="anchor" href="#props" aria-hidden="true"><span class="octicon octicon-link"></span></a>Props</h2>
+
+<h3>
+<a id="classname" class="anchor" href="#classname" aria-hidden="true"><span class="octicon octicon-link"></span></a>className</h3>
+
+<p>Define your own className property to the modal, must be a string, is optional, default 'Modal'.</p>
+
+<h3>
+<a id="onclickoverlay" class="anchor" href="#onclickoverlay" aria-hidden="true"><span class="octicon octicon-link"></span></a>onClickOverlay</h3>
+
+<p>A function to be called when the user clicked the overlay, must be a function, is required.</p>
+
+<h3>
+<a id="opacity" class="anchor" href="#opacity" aria-hidden="true"><span class="octicon octicon-link"></span></a>opacity</h3>
+
+<p>Define the opacity of the overlay, must be a number between 0 and 1, is optional, default <code>0.5</code>.</p>
+
+<h3>
+<a id="visible" class="anchor" href="#visible" aria-hidden="true"><span class="octicon octicon-link"></span></a>visible</h3>
+
+<p>Define is the Modal is visible, must be a boolean, is required.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">import</span> React <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> Modal <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-simple-modal<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">App</span> <span class="pl-k">=</span> React.<span class="pl-c1">createClass</span>({
+  <span class="pl-en">getInitialState</span>() {
+    <span class="pl-k">return</span> {
+      visible<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    };
+  },
+  <span class="pl-en">onClickOverlay</span>() {
+    <span class="pl-v">this</span>.<span class="pl-c1">setState</span>({
+      visible<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    });
+  },
+  <span class="pl-en">render</span>() {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>Modal onClickOverlay<span class="pl-k">=</span>{<span class="pl-v">this</span>.<span class="pl-c1">onClickOverlay</span>} visible<span class="pl-k">=</span>{<span class="pl-v">this</span>.<span class="pl-c1">state</span>.<span class="pl-c1">visible</span>}<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>h1<span class="pl-k">&gt;</span>Hello world<span class="pl-k">!&lt;</span>/h1<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>/Modal<span class="pl-k">&gt;</span>
+    );
+  },
+});
+
+React.<span class="pl-c1">render</span>(<span class="pl-k">&lt;</span>App /<span class="pl-k">&gt;</span>, <span class="pl-c1">document</span>.<span class="pl-c1">body</span>);</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sergiodxa/react-simple-modal">React-simple-modal</a> is maintained by <a href="https://github.com/sergiodxa">sergiodxa</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-48432002-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
