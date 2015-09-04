@@ -87,7 +87,7 @@ var Modal = _react2['default'].createClass({
         { style: this.state.styles.wrapper },
         _react2['default'].createElement(
           'div',
-          { style: this.state.subWrapper, onClick: this.props.onClickOverlay, ref: 'overlay' },
+          { style: this.state.styles.subWrapper, onClick: this.props.onClickOverlay, ref: 'overlay' },
           _react2['default'].createElement(
             'div',
             { style: this.state.styles.modal, className: this.props.className, ref: 'modal' },

@@ -72,7 +72,7 @@ const Modal = React.createClass({
     return (
       <div style={this.state.styles.overlay}>
         <div style={this.state.styles.wrapper}>
-          <div style={this.state.subWrapper} onClick={this.props.onClickOverlay} ref="overlay">
+          <div style={this.state.styles.subWrapper} onClick={this.props.onClickOverlay} ref="overlay">
             <div style={this.state.styles.modal} className={this.props.className} ref="modal">
               {this.props.children}
             </div>
