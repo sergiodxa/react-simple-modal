@@ -50,36 +50,50 @@ var Modal = _react2['default'].createClass({
         bottom: 0,
         display: visible ? 'block' : 'none',
         left: 0,
-        overflow: 'auto',
+        overflowY: 'auto',
         position: 'fixed',
         right: 0,
         top: 0,
         zIndex: 1000
       },
+      wrapper: {
+        bottom: 0,
+        boxSizing: 'border-box',
+        display: 'table',
+        height: '100%',
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        textAlign: 'center',
+        top: 0,
+        width: '100%'
+      },
+      subWrapper: {
+        display: 'table-cell',
+        verticalAlign: 'middle'
+      },
       modal: {
         background: 'white',
-        left: '50%',
-        position: 'absolute',
-        top: '50%',
-        transform: 'translateX(-50%) translateY(-50%)',
-        zIndex: 1001
+        margin: '0 auto'
       }
     };
   },
   render: function render() {
     return _react2['default'].createElement(
       'div',
-      {
-        style: this.state.styles.overlay,
-        onClick: this.onClick,
-        ref: 'overlay' },
+      { style: this.state.styles.overlay },
       _react2['default'].createElement(
         'div',
-        {
-          className: this.props.className,
-          style: this.state.styles.modal,
-          ref: 'modal' },
-        this.props.children
+        { style: this.state.styles.wrapper },
+        _react2['default'].createElement(
+          'div',
+          { style: this.state.subWrapper, onClick: this.props.onClickOverlay, ref: 'overlay' },
+          _react2['default'].createElement(
+            'div',
+            { style: this.state.styles.modal, className: this.props.className, ref: 'modal' },
+            this.props.children
+          )
+        )
       )
     );
   }
