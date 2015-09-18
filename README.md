@@ -1,4 +1,7 @@
 # react-simple-modal
+[![NPM](https://nodei.co/npm/react-simple-modal.png)](https://nodei.co/npm/react-simple-modal/)
+
+[![dependencies](https://david-dm.org/sergiodxa/react-simple-modal.png)](https://david-dm.org/sergiodxa/react-simple-modal)
 React modal make it simple.
 
 ## How use it
