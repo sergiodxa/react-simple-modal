@@ -1,0 +1,50 @@
+body {
+  font-family: Helvetica, Arial;
+  text-align: center;
+}
+.Btn {
+  background: #5bc0de;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  margin: 0 auto;
+  padding: 1.5em;
+  text-transform: uppercase;
+  width: 250px;
+}
+.Modal {
+  max-width: 480px;
+  padding: 2rem;
+  font-size: 1.25rem;
+}
+.Modal h2 {
+  font-size: 1.25rem;
+}
+.Modal button {
+  background: #5cb85c;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  margin: 1rem auto 0;
+  padding: 1em;
+  text-transform: uppercase;
+  width: 75%;
+}
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.fade-leave {
+  opacity: 1;
+}
+.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 0.5s;
+}
