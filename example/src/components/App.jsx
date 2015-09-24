@@ -1,11 +1,9 @@
 // node_modules
 import React from 'react/addons';
 // styles
-import css from '../styles/app.styl';
+import '../styles/app.styl';
 // own components
 import MyModal from './MyModal.jsx';
-
-console.log(css);
 
 const { CSSTransitionGroup } = React.addons;
 
