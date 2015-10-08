@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/sergiodxa/react-simple-modal#readme",
   "dependencies": {
-    "react": "^0.13.3"
+    "react": "^0.14.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
