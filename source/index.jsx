@@ -48,9 +48,6 @@ const Modal = React.createClass({
     }
     this.setState(visible);
   },
-  componentDidLeave() {
-    debugger
-  },
   getStyles() {
     return {
       overlay: {

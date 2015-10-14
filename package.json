@@ -1,6 +1,6 @@
 {
   "name": "react-simple-modal",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React modal make it simple.",
   "main": "dist/index.js",
   "scripts": {

@@ -6,21 +6,23 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _reactAddons = require('react/addons');
+var _react = require('react');
 
-var _reactAddons2 = _interopRequireDefault(_reactAddons);
+var _react2 = _interopRequireDefault(_react);
 
-var CSSTransitionGroup = _reactAddons2['default'].addons.CSSTransitionGroup;
+var _reactAddonsCssTransitionGroup = require('react-addons-css-transition-group');
 
-var Modal = _reactAddons2['default'].createClass({
+var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
+var Modal = _react2['default'].createClass({
   displayName: 'Modal',
   propTypes: {
-    className: _reactAddons2['default'].PropTypes.string,
-    children: _reactAddons2['default'].PropTypes.node.isRequired,
-    onClickOverlay: _reactAddons2['default'].PropTypes.func.isRequired,
-    opacity: _reactAddons2['default'].PropTypes.number,
-    visible: _reactAddons2['default'].PropTypes.bool,
-    animation: _reactAddons2['default'].PropTypes.string
+    className: _react2['default'].PropTypes.string,
+    children: _react2['default'].PropTypes.node.isRequired,
+    onClickOverlay: _react2['default'].PropTypes.func.isRequired,
+    opacity: _react2['default'].PropTypes.number,
+    visible: _react2['default'].PropTypes.bool,
+    animation: _react2['default'].PropTypes.string
   },
   getDefaultProps: function getDefaultProps() {
     return {
@@ -61,11 +63,6 @@ var Modal = _reactAddons2['default'].createClass({
     }
     this.setState(visible);
   },
-  onClick: function onClick(event) {
-    if (event.target === this.refs.overlay.getDOMNode()) {
-      this.props.onClickOverlay(event);
-    }
-  },
   getStyles: function getStyles() {
     return {
       overlay: {
@@ -103,9 +100,9 @@ var Modal = _reactAddons2['default'].createClass({
   },
   renderModal: function renderModal() {
     if (this.state.modalVisible) {
-      return _reactAddons2['default'].createElement(
+      return _react2['default'].createElement(
         'div',
-        { style: this.state.styles.modal, className: this.props.className, ref: 'modal' },
+        { style: this.state.styles.modal, className: this.props.className, ref: 'modal', onClick: this.stopPropagation },
         this.props.children
       );
     }
@@ -113,35 +110,36 @@ var Modal = _reactAddons2['default'].createClass({
   },
   renderContentOverlay: function renderContentOverlay() {
     if (this.props.animation) {
-      return _reactAddons2['default'].createElement(
-        CSSTransitionGroup,
+      return _react2['default'].createElement(
+        _reactAddonsCssTransitionGroup2['default'],
         {
           transitionAppear: true,
           transitionName: this.props.animation,
           component: 'div',
           style: this.state.styles.subWrapper,
-          onClick: this.onClick,
-          ref: 'overlay'
+          onClick: this.props.onClickOverlay,
+          transitionAppearTimeout: 700,
+          transitionEnterTimeout: 700,
+          transitionLeaveTimeout: 700
         },
         this.renderModal()
       );
     }
-    return _reactAddons2['default'].createElement(
+    return _react2['default'].createElement(
       'div',
       {
         style: this.state.styles.subWrapper,
-        onClick: this.onClick,
-        ref: 'overlay'
+        onClick: this.props.onClickOverlay
       },
       this.renderModal()
     );
   },
   renderOverlay: function renderOverlay() {
     if (this.state.overlayVisible) {
-      return _reactAddons2['default'].createElement(
+      return _react2['default'].createElement(
         'div',
         { style: this.state.styles.overlay },
-        _reactAddons2['default'].createElement(
+        _react2['default'].createElement(
           'div',
           { style: this.state.styles.wrapper },
           this.renderContentOverlay()
@@ -152,17 +150,27 @@ var Modal = _reactAddons2['default'].createClass({
   },
   render: function render() {
     if (this.props.animation) {
-      return _reactAddons2['default'].createElement(
-        CSSTransitionGroup,
-        { transitionName: 'fade', transitionAppear: true, component: 'div' },
+      return _react2['default'].createElement(
+        _reactAddonsCssTransitionGroup2['default'],
+        {
+          transitionName: 'fade',
+          transitionAppear: true,
+          component: 'div',
+          transitionAppearTimeout: 700,
+          transitionEnterTimeout: 700,
+          transitionLeaveTimeout: 700
+        },
         this.renderOverlay()
       );
     }
-    return _reactAddons2['default'].createElement(
+    return _react2['default'].createElement(
       'div',
       null,
       this.renderOverlay()
     );
+  },
+  stopPropagation: function stopPropagation(e) {
+    e.stopPropagation();
   }
 });
 
