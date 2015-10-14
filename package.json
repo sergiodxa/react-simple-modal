@@ -1,6 +1,6 @@
 {
   "name": "react-simple-modal",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "React modal make it simple.",
   "main": "dist/index.js",
   "scripts": {
@@ -24,14 +24,15 @@
   },
   "homepage": "https://github.com/sergiodxa/react-simple-modal#readme",
   "dependencies": {
-    "react": "^0.14.0"
+    "react": "0.14.0"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-eslint": "^4.1.1",
-    "eslint-plugin-react": "^3.3.0",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.2.1",
-    "gulp-eslint": "^1.0.0"
+    "babel": "5.7.23",
+    "babel-eslint": "4.1.1",
+    "eslint": "1.6.0",
+    "eslint-plugin-react": "3.3.0",
+    "gulp": "3.8.0",
+    "gulp-babel": "5.2.1",
+    "gulp-eslint": "1.0.0"
   }
 }
