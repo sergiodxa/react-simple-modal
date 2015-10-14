@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react/addons';
+const {CSSTransitionGroup} = React.addons;
 
 const Modal = React.createClass({
   displayName: 'Modal',
@@ -8,37 +9,56 @@ const Modal = React.createClass({
     onClickOverlay: React.PropTypes.func.isRequired,
     opacity: React.PropTypes.number,
     visible: React.PropTypes.bool,
+    animation: React.PropTypes.string,
   },
   getDefaultProps() {
     return {
       className: 'Modal',
-      visible: false,
       opacity: 0.5,
     };
   },
   getInitialState() {
     return {
-      styles: this.getStyles(this.props.visible),
+      styles: this.getStyles(),
     };
   },
   componentWillReceiveProps(newProps) {
-    if (newProps.visible !== this.props.visible) {
-      this.setState({
-        styles: this.getStyles(newProps.visible),
-      });
+    let visible = {};
+    if (newProps.visible) {
+      visible = {
+        overlayVisible: true,
+        modalVisible: true,
+      };
+    } else {
+      if (this.props.animation) {
+        visible = {
+          modalVisible: false,
+        };
+        setTimeout(()=> {
+          this.setState({
+            overlayVisible: false,
+          });
+        }, 300);
+      } else {
+        visible = {
+          overlayVisible: false,
+          modalVisible: false,
+        };
+      }
     }
+    this.setState(visible);
   },
   onClick(event) {
     if (event.target === this.refs.overlay.getDOMNode()) {
       this.props.onClickOverlay(event);
     }
   },
-  getStyles(visible) {
+  getStyles() {
     return {
       overlay: {
         background: `rgba(0,0,0,${this.props.opacity})`,
         bottom: 0,
-        display: visible ? 'block' : 'none',
+        display: 'block',
         left: 0,
         overflowY: 'auto',
         position: 'fixed',
@@ -68,16 +88,64 @@ const Modal = React.createClass({
       },
     };
   },
-  render() {
+  renderModal() {
+    if (this.state.modalVisible) {
+      return (
+        <div style={this.state.styles.modal} className={this.props.className} ref="modal">
+          {this.props.children}
+        </div>
+      );
+    }
+    return null;
+  },
+  renderContentOverlay() {
+    if (this.props.animation) {
+      return (
+        <CSSTransitionGroup
+          transitionAppear
+          transitionName={this.props.animation}
+          component="div"
+          style={this.state.styles.subWrapper}
+          onClick={this.onClick}
+          ref="overlay"
+          >
+          {this.renderModal()}
+        </CSSTransitionGroup>
+      );
+    }
     return (
-      <div style={this.state.styles.overlay}>
-        <div style={this.state.styles.wrapper}>
-          <div style={this.state.styles.subWrapper} onClick={this.onClick} ref="overlay">
-            <div style={this.state.styles.modal} className={this.props.className} ref="modal">
-              {this.props.children}
-            </div>
+      <div
+        style={this.state.styles.subWrapper}
+        onClick={this.onClick}
+        ref="overlay"
+        >
+        {this.renderModal()}
+      </div>
+    );
+  },
+  renderOverlay() {
+    if (this.state.overlayVisible) {
+      return (
+        <div style={this.state.styles.overlay}>
+          <div style={this.state.styles.wrapper}>
+            {this.renderContentOverlay()}
           </div>
         </div>
+      );
+    }
+    return null;
+  },
+  render() {
+    if (this.props.animation) {
+      return (
+        <CSSTransitionGroup transitionName="fade" transitionAppear component="div">
+          {this.renderOverlay()}
+        </CSSTransitionGroup>
+      );
+    }
+    return (
+      <div>
+        {this.renderOverlay()}
       </div>
     );
   },
