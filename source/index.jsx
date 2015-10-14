@@ -1,5 +1,5 @@
-import React from 'react/addons';
-const {CSSTransitionGroup} = React.addons;
+import React from 'react';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 const Modal = React.createClass({
   displayName: 'Modal',
@@ -48,10 +48,8 @@ const Modal = React.createClass({
     }
     this.setState(visible);
   },
-  onClick(event) {
-    if (event.target === this.refs.overlay.getDOMNode()) {
-      this.props.onClickOverlay(event);
-    }
+  componentDidLeave() {
+    debugger
   },
   getStyles() {
     return {
@@ -91,7 +89,7 @@ const Modal = React.createClass({
   renderModal() {
     if (this.state.modalVisible) {
       return (
-        <div style={this.state.styles.modal} className={this.props.className} ref="modal">
+        <div style={this.state.styles.modal} className={this.props.className} ref="modal" onClick={this.stopPropagation}>
           {this.props.children}
         </div>
       );
@@ -106,8 +104,10 @@ const Modal = React.createClass({
           transitionName={this.props.animation}
           component="div"
           style={this.state.styles.subWrapper}
-          onClick={this.onClick}
-          ref="overlay"
+          onClick={this.props.onClickOverlay}
+          transitionAppearTimeout={700}
+          transitionEnterTimeout={700}
+          transitionLeaveTimeout={700}
           >
           {this.renderModal()}
         </CSSTransitionGroup>
@@ -116,8 +116,7 @@ const Modal = React.createClass({
     return (
       <div
         style={this.state.styles.subWrapper}
-        onClick={this.onClick}
-        ref="overlay"
+        onClick={this.props.onClickOverlay}
         >
         {this.renderModal()}
       </div>
@@ -138,7 +137,14 @@ const Modal = React.createClass({
   render() {
     if (this.props.animation) {
       return (
-        <CSSTransitionGroup transitionName="fade" transitionAppear component="div">
+        <CSSTransitionGroup
+          transitionName="fade"
+          transitionAppear
+          component="div"
+          transitionAppearTimeout={700}
+          transitionEnterTimeout={700}
+          transitionLeaveTimeout={700}
+          >
           {this.renderOverlay()}
         </CSSTransitionGroup>
       );
@@ -148,6 +154,9 @@ const Modal = React.createClass({
         {this.renderOverlay()}
       </div>
     );
+  },
+  stopPropagation(e) {
+    e.stopPropagation();
   },
 });
 
