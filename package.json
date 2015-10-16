@@ -1,6 +1,6 @@
 {
   "name": "react-simple-modal",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "React modal make it simple.",
   "main": "dist/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "react": "0.14.0"
   },
   "devDependencies": {
-    "babel": "5.7.23",
+    "babel": "5.8.23",
     "babel-eslint": "4.1.1",
     "eslint": "1.6.0",
     "eslint-plugin-react": "3.3.0",
