@@ -20,10 +20,13 @@ const Modal = React.createClass({
   getInitialState() {
     return {
       styles: this.getStyles(),
+      overlayVisible: this.props.visible,
+      modalVisible: this.props.visible,
     };
   },
   componentWillReceiveProps(newProps) {
     let visible = {};
+    this.validate(newProps);
     if (newProps.visible) {
       visible = {
         overlayVisible: true,
@@ -47,6 +50,9 @@ const Modal = React.createClass({
       }
     }
     this.setState(visible);
+  },
+  validate() {
+
   },
   getStyles() {
     return {
