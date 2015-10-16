@@ -26,7 +26,6 @@ const Modal = React.createClass({
   },
   componentWillReceiveProps(newProps) {
     let visible = {};
-    this.validate(newProps);
     if (newProps.visible) {
       visible = {
         overlayVisible: true,

@@ -32,7 +32,9 @@ var Modal = _react2['default'].createClass({
   },
   getInitialState: function getInitialState() {
     return {
-      styles: this.getStyles()
+      styles: this.getStyles(),
+      overlayVisible: this.props.visible,
+      modalVisible: this.props.visible
     };
   },
   componentWillReceiveProps: function componentWillReceiveProps(newProps) {
