@@ -51,9 +51,6 @@ const Modal = React.createClass({
     }
     this.setState(visible);
   },
-  validate() {
-
-  },
   getStyles() {
     return {
       overlay: {
