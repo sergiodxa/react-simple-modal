@@ -104,7 +104,7 @@ var Modal = _react2['default'].createClass({
     if (this.state.modalVisible) {
       return _react2['default'].createElement(
         'div',
-        { style: this.state.styles.modal, className: this.props.className, ref: 'modal', onClick: this.stopPropagation },
+        { style: this.state.styles.modal, className: this.props.className, onClick: this.stopPropagation },
         this.props.children
       );
     }
