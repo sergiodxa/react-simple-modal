@@ -88,7 +88,7 @@ const Modal = React.createClass({
   renderModal() {
     if (this.state.modalVisible) {
       return (
-        <div style={this.state.styles.modal} className={this.props.className} ref="modal" onClick={this.stopPropagation}>
+        <div style={this.state.styles.modal} className={this.props.className} onClick={this.stopPropagation}>
           {this.props.children}
         </div>
       );
