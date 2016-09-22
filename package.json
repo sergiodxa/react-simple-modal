@@ -23,7 +23,7 @@
     "url": "https://github.com/sergiodxa/react-simple-modal/issues"
   },
   "homepage": "https://github.com/sergiodxa/react-simple-modal#readme",
-  "dependencies": {
+  "peerDependencies": {
     "react": "^15.0.0"
   },
   "devDependencies": {
