@@ -3,6 +3,8 @@
 
 [![dependencies](https://david-dm.org/sergiodxa/react-simple-modal.png)](https://david-dm.org/sergiodxa/react-simple-modal)
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 React modal make it simple.
 
 ## How use it
